@@ -8,6 +8,10 @@
     <title>IPR-3</title>
 </head>
 <body>
-    <p>Here will be IPR-3</p>
+    <p>Here is IPR-3</p>
+
+<ul>
+    <li>GET (<mark><code>{{config('app.url')}}/api/v1/</code></mark>) - Check API</li>
+</ul>
 </body>
 </html>
