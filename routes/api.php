@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
+    Route::post('/login', [\App\Http\Controllers\Api\V1\AuthController::class, 'login']);
     Route::get('/', function () {
         return response()->json(['message' => 'Api is working 🙂']);
     });
