@@ -6,12 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IPR-3</title>
+
 </head>
 <body>
-    <p>Here is IPR-3</p>
+<div id="app">
+    <app backend-url="{{config('app.url')}}"></app>
+</div>
 
-<ul>
-    <li>GET (<mark><code>{{config('app.url')}}/api/v1/</code></mark>) - Check API</li>
-</ul>
+<script src="{{asset('./js/app.js')}}"></script>
 </body>
 </html>
