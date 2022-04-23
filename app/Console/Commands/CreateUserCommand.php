@@ -6,28 +6,28 @@ use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 
-class CreateAdminCommand extends Command
+class CreateUserCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:create-admin {name} {email} {password}';
+    protected $signature = 'command:create-user {name} {email} {password}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Creating user';
 
     /**
      * Execute the console command.
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         try {
             User::create([
@@ -39,7 +39,6 @@ class CreateAdminCommand extends Command
         } catch (\Throwable $e) {
             $this->error($e->getMessage());
         }
-
 
         return 0;
     }

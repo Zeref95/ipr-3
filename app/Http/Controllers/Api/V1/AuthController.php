@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function login(Request $request): JsonResponse
     {
         try {
             $data = makeValidation($request->all(), [
@@ -17,12 +22,12 @@ class AuthController extends Controller
             ]);
 
             if (Auth::attempt($data)) {
-                return response()->json(['message' => 'ok']);
+                $token = Auth::user()->createToken('auth');
+                return response()->json(['token' => $token->plainTextToken]);
             }
             throw new \Exception('Wrong email or password');
         } catch (\Throwable $e) {
             return response()->json(['message' => $e->getMessage()], 400);
         }
-
     }
 }
