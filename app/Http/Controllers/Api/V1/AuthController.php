@@ -27,7 +27,7 @@ class AuthController extends Controller
             }
             throw new \Exception('Wrong email or password');
         } catch (\Throwable $e) {
-            return response()->json(['message' => $e->getMessage()], 400);
+            return response()->json(['message' => $e->getMessage()], 401);
         }
     }
 }
