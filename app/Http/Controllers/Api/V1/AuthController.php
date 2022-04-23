@@ -17,13 +17,13 @@ class AuthController extends Controller
     {
         try {
             $data = makeValidation($request->all(), [
-                'email' => 'required|email|exists:users,email|max:255',
+                'email' => 'required|email|max:255',
                 'password' => 'required|string|max:255',
             ]);
 
             if (Auth::attempt($data)) {
-                $token = Auth::user()->createToken('auth');
-                return response()->json(['token' => $token->plainTextToken]);
+                $token = Auth::user()->createToken('auth')->plainTextToken;
+                return response()->json(['token' => $token]);
             }
             throw new \Exception('Wrong email or password');
         } catch (\Throwable $e) {
